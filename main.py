@@ -1,11 +1,17 @@
 import os
+from audio_player import AudioPlayer
 from openai_text_generator import OpenAITextGenerator
+from openai_text_to_speech import OpenAITextToSpeech
 from conversation import Conversation
 
 
 def main():
     OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
     text_generator = OpenAITextGenerator(OPENAI_API_KEY)
+
+    text_to_speech = OpenAITextToSpeech(OPENAI_API_KEY)
+
+    audio_player = AudioPlayer()
 
     conversation = Conversation()
 
@@ -20,8 +26,12 @@ def main():
 
         generated_text = text_generator.get_text(
             conversation.get_conversation())
+
+        speech_file_path = text_to_speech.convert_text_to_speech(
+            generated_text)
+        audio_player.play_audio(speech_file_path)
+
         conversation.add_assistant_message(generated_text)
-        print(conversation.get_conversation())
 
 
 if __name__ == "__main__":
