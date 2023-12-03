@@ -16,4 +16,4 @@ class AudioPlayer:
             print("Error occurred while playing the audio file.")
         except FileNotFoundError:
             print(
-                f"{self.player_path} is not installed or not found in the system path.")
+                f"{self.player} is not installed or not found in the system path.")
