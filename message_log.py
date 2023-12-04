@@ -2,11 +2,14 @@ from typing import List
 from models.message import Role, Message
 
 
-class Conversation:
+class MessageLog:
+    """Represents the log of messages exchanged between a user and assistant."""
+
     def __init__(self) -> None:
         self.messages: List[Message] = []
 
-    def get_conversation(self):
+    def get_message_log(self) -> List[Message]:
+        """Returns all the messages in the log."""
         return self.messages
 
     def add_user_message(self, text: str) -> None:

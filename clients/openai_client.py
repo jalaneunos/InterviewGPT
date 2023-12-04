@@ -12,7 +12,7 @@ class OpenAIClient:
         response = self.client.chat.completions.create(
             messages=messsages,
             model=model,
-            max_tokens=50
+            max_tokens=256
         )
         return response.choices[0].message.content
 
@@ -32,6 +32,7 @@ class OpenAIClient:
         audio_file = open(filepath, "rb")
         transcript = self.client.audio.transcriptions.create(
             model=model,
-            file=audio_file
+            file=audio_file,
+            language="en"
         )
         return transcript

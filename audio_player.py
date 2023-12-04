@@ -11,7 +11,7 @@ class AudioPlayer:
             print("Audio file does not exist.")
             return
         try:
-            subprocess.run([self.player, str(file_path)], check=True)
+            subprocess.run([self.player, "-q", str(file_path)], check=True)
         except subprocess.CalledProcessError:
             print("Error occurred while playing the audio file.")
         except FileNotFoundError:
