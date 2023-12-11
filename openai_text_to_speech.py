@@ -7,5 +7,5 @@ class OpenAITextToSpeech:
         self.model = model
         self.output_filename = output_filename
 
-    def convert_text_to_speech(self, text: str) -> str:
-        return self.openai_client.text_to_speech(self.model, text, self.output_filename)
+    def convert_text_to_speech(self, text: str, output_filename) -> str:
+        return self.openai_client.text_to_speech(self.model, text, output_filename)
