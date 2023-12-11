@@ -8,5 +8,11 @@ class OpenAITextGenerator:
         self.openai_client = OpenAIClient(api_key)
         self.model = model
 
-    def get_text(self, messages: List[Message]) -> str:
+    def get_generated_text(self, messages: List[Message]) -> str:
+        """ Returns generated text synchronously """
         return self.openai_client.chat_completion(self.model, messages)
+
+    def stream_generated_text(self, messages: List[Message]) -> str:
+        """ Returns a stream of chunks following the Server-sent events standard."""
+        for sentence in self.openai_client.stream_chat_completion(self.model, messages):
+            yield sentence
