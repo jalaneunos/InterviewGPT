@@ -5,6 +5,7 @@ from enum import Enum
 class Role(str, Enum):
     ASSISTANT = 'assistant'
     USER = 'user'
+    SYSTEM = 'system'
 
 
 class Message(TypedDict):
